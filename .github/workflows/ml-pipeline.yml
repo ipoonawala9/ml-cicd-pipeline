@@ -54,6 +54,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Train and check accuracy >= threshold
         run: python -m src.train
+      - name: Publish metrics to job summary
+        if: always()
+        run: python -m src.report >> "$GITHUB_STEP_SUMMARY"
       - name: Upload trained model
         uses: actions/upload-artifact@v4
         with:
@@ -96,3 +99,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Smoke test the pushed image
+        run: docker run --rm ghcr.io/${{ github.repository }}:latest
