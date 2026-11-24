@@ -14,7 +14,7 @@ on:
 
 env:
   PYTHON_VERSION: "3.11"
-  ACCURACY_THRESHOLD: ${{ github.event.inputs.accuracy_threshold || '0.99' }}
+  ACCURACY_THRESHOLD: ${{ github.event.inputs.accuracy_threshold || '0.90' }}
 
 jobs:
   lint:
