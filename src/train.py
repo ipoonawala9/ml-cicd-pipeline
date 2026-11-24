@@ -3,6 +3,7 @@
 Exit code 0 = gate passed, 1 = gate failed (this fails the CI job).
 """
 import json
+import math
 import os
 import sys
 from pathlib import Path
